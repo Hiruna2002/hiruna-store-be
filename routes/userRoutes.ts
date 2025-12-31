@@ -51,7 +51,7 @@
 import express, { Request, Response } from "express";
 import User, { IUser } from "../models/User";
 import jwt, { JwtPayload, SignOptions } from "jsonwebtoken";
-import protect from "../middleware/authMiddleware";
+import {protect, admin} from "../middleware/authMiddleware";
 
 
 const router = express.Router();
@@ -128,18 +128,21 @@ router.post(
       password: string;
     };
 
+    console.log("password is to: ", password);
+
      
 
     try {
       // Find user by email
       const user: IUser | null = await User.findOne({ email }).select("+password");
+      console.log("Password is:" , password)
 
       if (!user) {
         res.status(400).json({ message: "user - Invalid credentials" });
         return;
       }
 
-     
+     console.log("Fetched password:", user.password); ///////////// ok
 
       // Match password
       const isMatch = await user.matchPassword(password);

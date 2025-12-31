@@ -21,6 +21,7 @@ import express, { Application, Request, Response } from "express";
 import cors from "cors";
 import connectDB from "./config/db";
 import userRoutes from "./routes/userRoutes";
+import productRoutes from "./routes/productRoutes";
 
 
 const app: Application = express();
@@ -39,6 +40,7 @@ app.get("/", (req: Request, res: Response): void => {
 
 // Api Routse
 app.use("/api/users", userRoutes);
+app.use("/api/product", productRoutes)
 
 app.listen(PORT, (): void => {
   console.log(`Server is running on http://localhost:${PORT}`);
