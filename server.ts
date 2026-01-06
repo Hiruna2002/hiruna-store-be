@@ -22,7 +22,7 @@ import cors from "cors";
 import connectDB from "./config/db";
 import userRoutes from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
-import cartRoutes from "./models/Cart";
+import cartRoutes from "./routes/cartRoutes";
 
 
 const app: Application = express();
