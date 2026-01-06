@@ -28,6 +28,7 @@ import orderRoutes from "./routes/orderRoutes";
 import uploadRoutes from "./routes/uploadRoustes";
 import subscriberRoutes from "./routes/subscriberRoutes";
 import adminRoutes from "./routes/adminRoutes";
+import productAdminRoutes from "./routes/productAdminRoutes";
 
 
 const app: Application = express();
@@ -44,7 +45,7 @@ app.get("/", (req: Request, res: Response): void => {
   res.send("WELCOME TO HIRUNA STORE API!");
 });
 
-// Api Routse
+// Api Routes
 app.use("/api/users", userRoutes);
 app.use("/api/product", productRoutes)
 app.use("/api/cart", cartRoutes);
@@ -52,7 +53,10 @@ app.use("/api/checkout", checkoutRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/subscribers", subscriberRoutes);
-app.use("/api/admin", adminRoutes);
+
+// Admin Routes
+app.use("/api/admin/users", adminRoutes);
+app.use("/api/admin/products", productAdminRoutes);
 
 app.listen(PORT, (): void => {
   console.log(`Server is running on http://localhost:${PORT}`);

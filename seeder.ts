@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import Product, { IProduct } from "./models/Product";
 import User, { IUser } from "./models/User";
 import Cart from "./models/Cart";
-import { products } from "./data/products";
+// import { products } from "./data/products";
 
 dotenv.config();
 
