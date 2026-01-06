@@ -35,6 +35,15 @@ interface AuthenticatedRequest extends Request {
   user?: IUser;
 }
 
+export interface AuthRequest extends Request {
+  user?: {
+    _id: string;
+    name: string;
+    email: string;
+    role: "admin" | "customer";
+  };
+}
+
 // Middleware to protect routes
 const protect = async (
   req: AuthenticatedRequest,

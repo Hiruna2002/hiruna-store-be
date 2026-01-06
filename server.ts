@@ -23,6 +23,9 @@ import connectDB from "./config/db";
 import userRoutes from "./routes/userRoutes";
 import productRoutes from "./routes/productRoutes";
 import cartRoutes from "./routes/cartRoutes";
+import checkoutRoutes from "./routes/checkoutRoutes";
+import orderRoutes from "./routes/orderRoutes";
+import uploadRoutes from "./routes/uploadRoustes";
 
 
 const app: Application = express();
@@ -43,6 +46,9 @@ app.get("/", (req: Request, res: Response): void => {
 app.use("/api/users", userRoutes);
 app.use("/api/product", productRoutes)
 app.use("/api/cart", cartRoutes);
+app.use("/api/checkout", checkoutRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/upload", uploadRoutes);
 
 app.listen(PORT, (): void => {
   console.log(`Server is running on http://localhost:${PORT}`);
