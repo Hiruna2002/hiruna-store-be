@@ -1,20 +1,3 @@
-// const express = require("express");
-// const cors = require("cors");
-
-// const app = express();
-// app.use(express.json());
-// app.use(cors());
-
-// const PORT = 9000;
-
-// app.get("/", (req,res) => {
-//     res.send("WELCOME TO HIRUNA STORE API!");
-// });
-
-// app.listen(PORT, () => {
-//     console.log(`Server is running on http://localhost:${PORT}`);
-// });
-
 import dotenv from "dotenv";
 dotenv.config();
 import express, { Application, Request, Response } from "express";
@@ -48,7 +31,7 @@ app.get("/", (req: Request, res: Response): void => {
 
 // Api Routes
 app.use("/api/users", userRoutes);
-app.use("/api/product", productRoutes)
+app.use("/api/products", productRoutes)
 app.use("/api/cart", cartRoutes);
 app.use("/api/checkout", checkoutRoutes);
 app.use("/api/orders", orderRoutes);

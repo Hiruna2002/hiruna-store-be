@@ -80,7 +80,7 @@ const router = express.Router();
 router.post(
   "/",
   protect, admin,
-  async (req: AuthRequest, res: Response): Promise<void> => {
+  async (req: AuthRequest, res: Response) => {
     try {
       const {
         name,
@@ -92,7 +92,7 @@ router.post(
         brand,
         sizes,
         colors,
-        collectionName,
+        collections,
         material,
         gender,
         images,
@@ -114,7 +114,7 @@ router.post(
         brand,
         sizes,
         colors,
-        collectionName,
+        collections,
         material,
         gender,
         images,
@@ -124,7 +124,7 @@ router.post(
         dimensions,
         weight,
         sku,
-        user: req.user?._id,
+        user: req.user!._id,
       });
 
       const createdProduct = await product.save();
@@ -226,7 +226,7 @@ router.delete("/:id", protect, admin, async (req: Request, res: Response): Promi
 router.get("/", async (req: Request, res: Response) => {
   try {
     const {
-      collection,
+      collections,
       size,
       color,
       gender,
@@ -243,8 +243,8 @@ router.get("/", async (req: Request, res: Response) => {
     let query: any = {};
     let sort: any = {};
 
-    if (collection && collection !== "all") {
-      query.collections = collection;
+    if (collections && collections !== "all") {
+      query.collections = collections;
     }
 
     if (category && category !== "all") {

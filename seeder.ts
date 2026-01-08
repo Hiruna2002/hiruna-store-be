@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import Product, { IProduct } from "./models/Product";
 import User, { IUser } from "./models/User";
 import Cart from "./models/Cart";
-// import { products } from "./data/products";
+import { products } from "./data/products";
 
 dotenv.config();
 
@@ -33,7 +33,7 @@ const seedData = async (): Promise<void> => {
 
     const userId = createUser._id;
 
-    const products: IProduct[] = [];
+    // const products: IProduct[] = [];
    
     const sampleProducts: IProduct[] = products.map((product) => ({
         ...product,
