@@ -36,7 +36,7 @@ app.use("/api/cart", cartRoutes);
 app.use("/api/checkout", checkoutRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
-app.use("/api/subscribers", subscriberRoutes);
+app.use("/api/subscribe", subscriberRoutes);
 
 // Admin Routes
 app.use("/api/admin/users", adminRoutes);

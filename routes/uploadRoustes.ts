@@ -27,8 +27,8 @@ router.post(
   async (req: MulterRequest, res: Response) => {
     try {
       if (!req.file) {
-        return res.status(400).json({ message: "No file uploaded" });
-      }
+      return res.status(400).json({ message: "No file uploaded" });
+    }
 
       const streamUpload = (fileBuffer: Buffer) => {
         return new Promise<any>((resolve, reject) => {

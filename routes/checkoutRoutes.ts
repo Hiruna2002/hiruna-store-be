@@ -4,6 +4,7 @@ import Cart from "../models/Cart";
 import Order from "../models/Order";
 import { protect, AuthRequest } from "../middleware/authMiddleware";
 import { Types } from "mongoose";
+import mongoose from "mongoose";
 
 const router = express.Router();
 
@@ -26,7 +27,12 @@ router.post("/", protect, async (req: AuthRequest, res: Response) => {
     const newCheckout = await Checkout.create({
       user: req.user!._id,
       checkoutItems: mappedCheckoutItems,
-      shippingAddress,
+      shippingAddress : {
+        address: shippingAddress.address,
+        city: shippingAddress.city,
+        postalCode: shippingAddress.postalCode,
+        country: shippingAddress.country,
+      },
       paymentMethod,
       totalPrice,
       paymentStatus: "Pending",
@@ -46,6 +52,13 @@ router.put("/:id/pay", protect, async (req: AuthRequest, res: Response) => {
   const { paymentStatus, paymentDetails } = req.body;
 
   try {
+    console.log("ID:", req.params.id);
+    console.log("BODY:", req.body);
+
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "Invalid checkout ID" });
+    }
+
     const checkout = await Checkout.findById(req.params.id);
 
     if (!checkout) {
