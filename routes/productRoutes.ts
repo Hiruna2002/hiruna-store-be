@@ -334,7 +334,7 @@ router.get("/new-arrivals", async (req: Request, res: Response) => {
     console.error(error);
     res.status(500).send("Server Error");
   }
-})
+});
 
 router.get("/:id", async (req: Request, res: Response) => {
   try {

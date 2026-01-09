@@ -1,11 +1,13 @@
 import mongoose, { Schema, Document, Types } from "mongoose";
 
 export interface ICheckoutItem {
-  productId: Types.ObjectId;
-  name: string;
-  image: string;
-  price: number;
-  quantity: number; 
+  productId?: Types.ObjectId;
+  name?: string;
+  image?: string;
+  price?: number;
+  quantity?: number; 
+  size?: string;
+  color?: string;
 }
 
 export interface ICheckout extends Document {
@@ -52,8 +54,13 @@ const checkoutItemSchema = new Schema<ICheckoutItem>(
       type: Number, 
       required: true 
     }, 
-    // size: String,
-    // color:String,
+    size: {
+      type: String
+    },
+
+    color: {
+      type: String,
+    },
   },
   { _id: false }
 );
