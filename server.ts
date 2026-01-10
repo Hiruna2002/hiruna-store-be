@@ -10,6 +10,8 @@ import checkoutRoutes from "./routes/checkoutRoutes";
 import orderRoutes from "./routes/orderRoutes";
 import uploadRoutes from "./routes/uploadRoustes";
 import subscriberRoutes from "./routes/subscriberRoutes";
+import authRoutes from "./routes/userRoutes";
+
 import adminRoutes from "./routes/adminRoutes";
 import productAdminRoutes from "./routes/productAdminRoutes";
 import adminOrderRoutes from "./routes/adminOrderRoutes";
@@ -37,6 +39,7 @@ app.use("/api/checkout", checkoutRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/subscribe", subscriberRoutes);
+app.use("/api/auth", authRoutes);
 
 // Admin Routes
 app.use("/api/admin/users", adminRoutes);
